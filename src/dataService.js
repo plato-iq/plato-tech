@@ -24,6 +24,8 @@ export function getRestaurantSettings(slug) {
     theme: restaurant.theme,
     currency: restaurant.currency,
     orderEnabled: restaurant.orderEnabled,
+    orderingHours: restaurant.orderingHours,
+    timezone: restaurant.timezone,
   };
 }
 export function getRestaurantMenu(slug) {

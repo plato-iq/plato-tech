@@ -4,8 +4,10 @@ import {
   getRestaurantMenu,
   getRestaurantSettings,
 } from "./dataService";
-import { createOrder } from "./orderService";
-
+import {
+  createOrder,
+  isOrderingOpen,
+} from "./orderService";
 const restaurantSlug =
   window.location.pathname.split("/").filter(Boolean)[0] || "burger-house";
 
@@ -17,7 +19,11 @@ const selectedMenu =
 const restaurantTheme = selectedRestaurant?.theme || {
   primary: "#ff5a36",
   dark: "#171717",
+  
 };
+const orderingOpen =
+  isOrderingOpen(selectedRestaurant);
+
 function PlatoHome() {
   return (
     <div className="plato-home">
@@ -136,6 +142,33 @@ function PlatoHome() {
   );
 }
 
+function getCurrentOrderingDay(restaurant) {
+  const timezone =
+    restaurant?.timezone || "Asia/Baghdad";
+
+  const formatter = new Intl.DateTimeFormat(
+    "en-US",
+    {
+      timeZone: timezone,
+      weekday: "long",
+    }
+  );
+
+  const day = formatter.format(new Date());
+
+  const dayNames = {
+    Sunday: "sunday",
+    Monday: "monday",
+    Tuesday: "tuesday",
+    Wednesday: "wednesday",
+    Thursday: "thursday",
+    Friday: "friday",
+    Saturday: "saturday",
+  };
+
+  return dayNames[day];
+}
+
 function App() {
     document.body.classList.remove("plato-mode", "restaurant-mode");
 
@@ -160,6 +193,13 @@ const [whatsappUrl, setWhatsappUrl] = useState("");
   const [address, setAddress] = useState("");
   const [notes, setNotes] = useState("");
   const [selectedBranch, setSelectedBranch] = useState("");
+  const currentDayName =
+  getCurrentOrderingDay(selectedRestaurant);
+
+const currentDayHours =
+  selectedRestaurant.orderingHours?.[
+    currentDayName
+  ];
 function handleOrderTypeChange(type) {
   setOrderType(type);
 
@@ -203,12 +243,12 @@ function handleOrderTypeChange(type) {
 
  function addToCart(item) {
   if (
-    !selectedRestaurant.orderEnabled ||
-    !item.available ||
-    !item.orderEnabled
-  ) {
-    return;
-  }
+  !orderingOpen ||
+  item.available === false ||
+  item.orderEnabled === false
+) {
+  return;
+}
 
   setCart((currentCart) => {
     const existingItem = currentCart.find(
@@ -305,6 +345,10 @@ function handleOrderTypeChange(type) {
   // =========================
 
   function openCheckout() {
+     if (!orderingOpen) {
+    alert("الطلبات غير متاحة في هذا الوقت");
+    return;
+  }
     if (cart.length === 0) {
       alert("السلة فارغة");
       return;
@@ -325,6 +369,10 @@ function handleOrderTypeChange(type) {
   // إرسال الطلب إلى WhatsApp
   // =========================
 function sendToWhatsApp() {
+  if (!orderingOpen) {
+  alert("الطلبات غير متاحة في هذا الوقت");
+  return;
+}
   if (
     orderType !== "داخل المطعم" &&
     !customerName.trim()
@@ -388,6 +436,12 @@ function sendToWhatsApp() {
     });
     setCreatedOrder(order);
     setCart([]);
+    setCustomerName("");
+setCustomerPhone("");
+setTableNumber("");
+setAddress("");
+setNotes("");
+setSelectedBranch("");
   } catch (error) {
     alert(error.message);
     return;
@@ -507,6 +561,31 @@ setShowCheckout(false);
       ========================== */}
 
       <main>
+        {!selectedRestaurant.orderEnabled ? (
+  <div className="orders-disabled-message">
+    <strong>الطلبات غير متاحة حالياً</strong>
+    <span>
+      المطعم لا يستقبل الطلبات حالياً.
+    </span>
+  </div>
+) : !orderingOpen ? (
+  <div className="orders-disabled-message">
+    <strong>الطلبات مغلقة حالياً</strong>
+
+    {currentDayHours?.enabled ? (
+      <span>
+        الطلبات متاحة من{" "}
+        {currentDayHours.start}{" "}
+        إلى{" "}
+        {currentDayHours.end}
+      </span>
+    ) : (
+      <span>
+        المطعم لا يستقبل الطلبات اليوم.
+      </span>
+    )}
+  </div>
+) : null}
         <div className="categories">
           {selectedMenu.map((category) => (
             <button
@@ -556,16 +635,16 @@ setShowCheckout(false);
 
                     <div className="product-bottom">
                       <strong>
-                        {item.price.toLocaleString()} د.ع
+                        {item.price.toLocaleString()} {selectedRestaurant.currency}
                       </strong>
 
-                      {selectedRestaurant.orderEnabled && (
+{selectedRestaurant.orderEnabled &&  orderingOpen && (
   <>
     {!item.available ? (
       <button type="button" disabled>
         غير متوفر
       </button>
-    ) : !item.orderEnabled ? (
+    ) : item.orderEnabled === false ? (
       <button type="button" disabled>
         الطلب متوقف
       </button>
@@ -592,7 +671,8 @@ setShowCheckout(false);
           CART
       ========================== */}
 
-      {selectedRestaurant.orderEnabled && cart.length > 0 && (
+      {selectedRestaurant.orderEnabled &&   orderingOpen &&
+ cart.length > 0 && (
         <div className="cart">
           <div className="cart-summary">
             <div className="cart-total-info">
@@ -605,7 +685,7 @@ setShowCheckout(false);
               </span>
 
               <strong className="cart-total">
-                {total.toLocaleString()} د.ع
+                {total.toLocaleString()} {selectedRestaurant.currency}
               </strong>
             </div>
 
@@ -651,7 +731,7 @@ setShowCheckout(false);
                       item.price *
                       item.quantity
                     ).toLocaleString()}{" "}
-                    د.ع
+                    {selectedRestaurant.currency}
                   </span>
                 </div>
 
@@ -852,7 +932,7 @@ setShowCheckout(false);
                 </label>
 
                 <textarea
-                  placeholder="اكتب عنوان التوصيل بالتفصيل"
+                  placeholder="يرجى كتابة العنوان بالتفصيل, مع اختيار الفرع الاقرب"
                   value={address}
                   onChange={(e) =>
                     setAddress(
@@ -897,7 +977,7 @@ setShowCheckout(false);
                       item.price *
                       item.quantity
                     ).toLocaleString()}{" "}
-                    د.ع
+                    {selectedRestaurant.currency}
                   </strong>
                 </div>
               ))}
@@ -909,7 +989,7 @@ setShowCheckout(false);
               <span>المجموع</span>
 
               <strong>
-                {total.toLocaleString()} د.ع
+                {total.toLocaleString()} {selectedRestaurant.currency}
               </strong>
             </div>
 
@@ -967,6 +1047,13 @@ setShowCheckout(false);
               onClick={() => {
                 setCreatedOrder(null);
                 setWhatsappUrl("");
+                 setCustomerName("");
+    setCustomerPhone("");
+    setTableNumber("");
+    setAddress("");
+    setNotes("");
+    setSelectedBranch("");
+    setOrderType("استلام من المطعم");
               }}
             >
               العودة إلى المنيو

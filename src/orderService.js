@@ -6,6 +6,119 @@ export const ORDER_STATUSES = {
   CANCELLED: "cancelled",
 };
 
+export function isOrderingOpen(restaurant, date = new Date()) {
+  if (!restaurant) {
+    return false;
+  }
+
+  if (restaurant.orderEnabled === false) {
+    return false;
+  }
+
+  const hours = restaurant.orderingHours;
+
+  if (!hours?.enabled) {
+    return true;
+  }
+
+  const timezone =
+    restaurant.timezone || "Asia/Baghdad";
+
+  let parts;
+
+  try {
+    const formatter = new Intl.DateTimeFormat(
+      "en-US",
+      {
+        timeZone: timezone,
+        weekday: "long",
+        hour: "2-digit",
+        minute: "2-digit",
+        hourCycle: "h23",
+      }
+    );
+
+    parts = formatter.formatToParts(date);
+  } catch {
+    return false;
+  }
+
+  const values = {};
+
+  for (const part of parts) {
+    values[part.type] = part.value;
+  }
+
+  const dayNames = {
+    Sunday: "sunday",
+    Monday: "monday",
+    Tuesday: "tuesday",
+    Wednesday: "wednesday",
+    Thursday: "thursday",
+    Friday: "friday",
+    Saturday: "saturday",
+  };
+
+  const dayName = dayNames[values.weekday];
+
+  const today = hours[dayName];
+
+  if (!today?.enabled) {
+    return false;
+  }
+
+  const start = today.start;
+  const end = today.end;
+
+  if (!start || !end) {
+    return false;
+  }
+
+  const [startHour, startMinute] = start
+    .split(":")
+    .map(Number);
+
+  const [endHour, endMinute] = end
+    .split(":")
+    .map(Number);
+
+  const currentHour = Number(values.hour);
+  const currentMinute = Number(values.minute);
+
+  const currentMinutes =
+    currentHour * 60 + currentMinute;
+
+  const startMinutes =
+    startHour * 60 + startMinute;
+
+  const endMinutes =
+    endHour * 60 + endMinute;
+
+  if (
+    !Number.isFinite(startMinutes) ||
+    !Number.isFinite(endMinutes) ||
+    !Number.isFinite(currentMinutes)
+  ) {
+    return false;
+  }
+
+  if (startMinutes === endMinutes) {
+    return true;
+  }
+
+  if (startMinutes < endMinutes) {
+    return (
+      currentMinutes >= startMinutes &&
+      currentMinutes < endMinutes
+    );
+  }
+
+  return (
+    currentMinutes >= startMinutes ||
+    currentMinutes < endMinutes
+  );
+}
+
 export function createOrder({
   restaurant,
   customerName,
@@ -111,9 +224,9 @@ function validateOrderData({
     throw new Error("المطعم غير موجود");
   }
 
-  if (restaurant.orderEnabled === false) {
-    throw new Error("الطلبات متوقفة حاليًا");
-  }
+  if (!isOrderingOpen(restaurant)) {
+  throw new Error("الطلبات غير متاحة في هذا الوقت");
+}
 
   const allowedOrderTypes = [
     "داخل المطعم",

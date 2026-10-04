@@ -5,8 +5,54 @@ const DEFAULT_RESTAURANT_SETTINGS = {
     primary: "#7c3aed",
     dark: "#171717",
   },
+  timezone: "Asia/Baghdad",
   currency: "د.ع",
   orderEnabled: true,
+orderingHours: {
+  enabled: false,
+
+  saturday: {
+    enabled: false,
+    start: "00:00",
+    end: "23:59",
+  },
+
+  sunday: {
+    enabled: true,
+    start: "00:00",
+    end: "23:59",
+  },
+
+  monday: {
+    enabled: false,
+    start: "00:00",
+    end: "23:59",
+  },
+
+  tuesday: {
+    enabled: false,
+    start: "00:00",
+    end: "23:59",
+  },
+
+  wednesday: {
+    enabled: false,
+    start: "00:00",
+    end: "23:59",
+  },
+
+  thursday: {
+    enabled: false,
+    start: "00:00",
+    end: "23:59",
+  },
+
+  friday: {
+    enabled: false,
+    start: "00:00",
+    end: "23:59",
+  },
+},
 };
 
 function createRestaurant(settings) {
@@ -18,6 +64,46 @@ function createRestaurant(settings) {
       ...DEFAULT_RESTAURANT_SETTINGS.theme,
       ...(settings.theme || {}),
     },
+
+   orderingHours: {
+  ...DEFAULT_RESTAURANT_SETTINGS.orderingHours,
+  ...(settings.orderingHours || {}),
+
+  saturday: {
+    ...DEFAULT_RESTAURANT_SETTINGS.orderingHours.saturday,
+    ...(settings.orderingHours?.saturday || {}),
+  },
+
+  sunday: {
+    ...DEFAULT_RESTAURANT_SETTINGS.orderingHours.sunday,
+    ...(settings.orderingHours?.sunday || {}),
+  },
+
+  monday: {
+    ...DEFAULT_RESTAURANT_SETTINGS.orderingHours.monday,
+    ...(settings.orderingHours?.monday || {}),
+  },
+
+  tuesday: {
+    ...DEFAULT_RESTAURANT_SETTINGS.orderingHours.tuesday,
+    ...(settings.orderingHours?.tuesday || {}),
+  },
+
+  wednesday: {
+    ...DEFAULT_RESTAURANT_SETTINGS.orderingHours.wednesday,
+    ...(settings.orderingHours?.wednesday || {}),
+  },
+
+  thursday: {
+    ...DEFAULT_RESTAURANT_SETTINGS.orderingHours.thursday,
+    ...(settings.orderingHours?.thursday || {}),
+  },
+
+  friday: {
+    ...DEFAULT_RESTAURANT_SETTINGS.orderingHours.friday,
+    ...(settings.orderingHours?.friday || {}),
+  },
+},
 
     branches: settings.branches || [],
   };
@@ -32,6 +118,12 @@ const restaurants = [
     location: "https://maps.app.goo.gl/mxJWrzvZRNE1VjkU6",
     logo: "CH",
     logoImage: "/logos/1.jpg",
+
+    orderingHours: {
+  enabled: true,
+  start: "15:00",
+  end: "23:00",
+},
 
     branchesEnabled: true,
 
@@ -66,14 +158,25 @@ const restaurants = [
   }),
 
   createRestaurant({
-    slug: "restaurant-template",
-    name: "اسم المطعم",
-    description: "وصف المطعم",
-    phone: "9647XXXXXXXXX",
-    location: "https://maps.app.goo.gl/XXXXXXXX",
-    logo: "RN",
-    logoImage: "/logos/restaurant.jpg",
-  }),
+  slug: "test-restaurant",
+  name: "Test Restaurant",
+  description: "مطعم تجريبي لاختبار نظام PLATO TECH",
+  phone: "9647722248374",
+  location: "https://maps.google.com",
+  logo: "TR",
+  logoImage: "",
+
+  branchesEnabled: false,
+  branches: [],
+
+  theme: {
+    primary: "#2563eb",
+    dark: "#111827",
+  },
+
+  currency: "د.ع",
+  orderEnabled: true,
+}),
 ];
 
 export function getRestaurantBySlug(slug) {

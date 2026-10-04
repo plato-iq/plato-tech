@@ -176,7 +176,61 @@ const menus = {
       ],
     },
   ],
-  
+    "test-restaurant": [
+    {
+      id: "test-burgers",
+      name: "برجر",
+      order: 1,
+
+      items: [
+        {
+          id: "test-001",
+          name: "كلاسيك برجر",
+          description: "لحم، خس، طماطم وصوص خاص",
+          price: 4000,
+          image:
+            "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
+          imageAlt: "كلاسيك برجر",
+          available: true,
+          orderEnabled: true,
+          order: 1,
+        },
+        {
+          id: "test-002",
+          name: "تشيز برجر",
+          description: "لحم، جبن، خس وطماطم",
+          price: 5000,
+          image:
+            "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600",
+          imageAlt: "تشيز برجر",
+          available: true,
+          orderEnabled: true,
+          order: 2,
+        },
+      ],
+    },
+
+    {
+      id: "test-drinks",
+      name: "مشروبات",
+      order: 2,
+
+      items: [
+        {
+          id: "test-003",
+          name: "بيبسي",
+          description: "بيبسي بارد",
+          price: 500,
+          image:
+            "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=600",
+          imageAlt: "بيبسي",
+          available: true,
+          orderEnabled: true,
+          order: 1,
+        },
+      ],
+    },
+  ],
 };
 
 function getMenuBySlug(slug) {
