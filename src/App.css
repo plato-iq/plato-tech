@@ -875,22 +875,21 @@ body.restaurant-mode .product-bottom strong {
 }
 
 body.restaurant-mode .product-bottom button {
-  min-height: 42px;
+  min-height: 35px;
 
-  padding: 0 18px;
+  padding: 0 15px;
 
-  border: none;
+  border: content-box;
+  border-radius: 14px;
 
-  border-radius: 12px;
-
-  background:
-    rgb(255, 90, 54);
-
+  background: rgb(255, 90, 54);
   color: white;
 
-  font-size: 14px;
-
-  font-weight: 800;
+  font-size: 13px;
+  font-weight: 1000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   cursor: pointer;
 
@@ -2911,7 +2910,7 @@ body.restaurant-mode .branch-selector h3 {
 
   font-size: 18px;
 
-  font-weight: 800;
+  font-weight: 1000;
 }
 
 body.restaurant-mode .branch-buttons {
@@ -2938,7 +2937,7 @@ body.restaurant-mode .branch-buttons button {
 
   font-size: 14px;
 
-  font-weight: 700;
+  font-weight: 1000;
 
   cursor: pointer;
 
