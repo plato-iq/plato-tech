@@ -9,10 +9,10 @@ const DEFAULT_RESTAURANT_SETTINGS = {
   currency: "د.ع",
   orderEnabled: true,
 orderingHours: {
-  enabled: false,
+  enabled: true,
 
   saturday: {
-    enabled: false,
+    enabled: true,
     start: "00:00",
     end: "23:59",
   },
@@ -24,31 +24,31 @@ orderingHours: {
   },
 
   monday: {
-    enabled: false,
+    enabled: true,
     start: "00:00",
     end: "23:59",
   },
 
   tuesday: {
-    enabled: false,
+    enabled: true,
     start: "00:00",
     end: "23:59",
   },
 
   wednesday: {
-    enabled: false,
+    enabled: true,
     start: "00:00",
     end: "23:59",
   },
 
   thursday: {
-    enabled: false,
+    enabled: true,
     start: "00:00",
     end: "23:59",
   },
 
   friday: {
-    enabled: false,
+    enabled: true,
     start: "00:00",
     end: "23:59",
   },
@@ -168,7 +168,7 @@ heroImage: "/IMG/0.jpg",
   heroImage: "/IMG/22.jpg",
  orderingHours: {
   enabled: true,
-  start: "09:00",
+  start: "12:00",
   end: "23:59",
 },
   branchesEnabled: true,

@@ -323,7 +323,7 @@ function validateOrderData({
 function generateOrderNumber(slug) {
   const storageKey = `plato-order-number-${slug}`;
 
-  let lastNumber = 0;
+  let lastNumber;
 
   try {
     lastNumber =
