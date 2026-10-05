@@ -879,7 +879,7 @@ body.restaurant-mode .product-bottom button {
 
   padding: 0 15px;
 
-  border: content-box;
+  border: none;
   border-radius: 14px;
 
   background: rgb(255, 90, 54);
@@ -3074,14 +3074,53 @@ select:focus-visible {
 
   body.restaurant-mode .product {
     min-height: 125px;
-  }
+    overflow: hidden;
 
-  body.restaurant-mode .product img {
-    width: 120px;
-    min-width: 120px;
+  position: relative;
 
-    height: 125px;
+  isolation: isolate;
   }
+body.restaurant-mode .product img {
+  width: 125px;
+  min-width: 125px;
+
+  height: 125px;
+
+  object-fit: cover;
+  object-position: center;
+
+  margin: 0;
+
+  -webkit-mask-image:
+    linear-gradient(
+      to left,
+      #000 0%,
+      #000 55%,
+      rgba(0, 0, 0, 0.85) 72%,
+      rgba(0, 0, 0, 0.45) 88%,
+      transparent 100%
+    );
+
+  mask-image:
+    linear-gradient(
+      to left,
+      #000 0%,
+      #000 55%,
+      rgba(0, 0, 0, 0.85) 72%,
+      rgba(0, 0, 0, 0.45) 88%,
+      transparent 100%
+    );
+
+  transform: none;
+
+  filter:
+    saturate(1.06)
+    contrast(1.04);
+
+  transition:
+    filter 300ms ease;
+}
+
 
   body.restaurant-mode .product-info {
     padding: 12px;
