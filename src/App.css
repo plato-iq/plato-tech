@@ -2992,8 +2992,8 @@ select:focus-visible {
 
 /* =========================================================
    45. MOBILE — MAX 600PX
-   ========================================================= *
-
+   ========================================================= */
+@media (max-width: 600px) {
   /* ---------- Restaurant ---------- */
 
   body.restaurant-mode .app {
@@ -3015,7 +3015,7 @@ select:focus-visible {
   }
 
   body.restaurant-mode .hero {
-    min-height: 350px;
+    min-height: 35px;
   }
 
   body.restaurant-mode .hero-overlay {
@@ -3332,7 +3332,7 @@ select:focus-visible {
   }
 
 
-
+}
 /* =========================================================
    46. VERY SMALL PHONES — MAX 380PX
    ========================================================= */
