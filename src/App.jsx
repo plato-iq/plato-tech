@@ -499,15 +499,38 @@ setWhatsappUrl(whatsappLink);
 setShowCheckout(false);
 }
   return (
-    <div className="app">
+    <div className="app"
+     style={{
+        "--restaurant-primary": restaurantTheme.primary,
+        "--restaurant-dark": restaurantTheme.dark,
+      }}>
 <div className="brand-name">
   <span>PLATO TECH - DIGITAL SOLUTIONS</span>
+   <a
+    href="https://wa.me/9647729511166"
+    target="_blank"
+    rel="noreferrer"
+    className="plato-contact-button"
+  >
+    تواصل معنا
+  </a>
 </div>
       {/* =========================
           HEADER / COVER
       ========================== */}
 
-<header className="hero">
+<header className="hero"
+style={{
+    backgroundImage: `
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.35) 45%,
+        rgb(0, 0, 0) 100%
+      ),
+      url("${selectedRestaurant.heroImage}")
+    `,
+  }} >
   <div className="hero-overlay">
 
     <div className="logo">

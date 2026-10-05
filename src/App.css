@@ -2,7 +2,9 @@
    PLATO TECH — RESTAURANT MENU + PLATO HOME
    CLEANED / UNIFIED STYLESHEET
    ========================================================= */
-
+@import url(
+  "https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+);
 
 /* =========================================================
    1. ROOT VARIABLES
@@ -46,9 +48,6 @@
    2. RESET / GLOBAL
    ========================================================= */
 
-@import url(
-  "https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
-);
 
 * {
   box-sizing: border-box;
@@ -192,12 +191,6 @@ body.restaurant-mode .brand-name {
   justify-content: center;
 
   box-sizing: border-box;
-
-  background: rgba(255, 255, 255, 0.96);
-
-  border-bottom:
-    1px solid rgba(0, 0, 0, 0.045);
-
   z-index: 10;
 }
 
@@ -213,7 +206,7 @@ body.restaurant-mode .brand-name span {
 
   background:
     linear-gradient(
-      135deg,
+      60deg,
       #d94322 0%,
       #ff5a36 45%,
       #ff8a70 100%
@@ -245,7 +238,7 @@ body.restaurant-mode .brand-name::after {
 
   background:
     linear-gradient(
-      90deg,
+      60deg,
       transparent,
       #ff5a36,
       #ff8a70,
@@ -254,7 +247,7 @@ body.restaurant-mode .brand-name::after {
 
   border-radius: 999px;
 
-  opacity: 0.75;
+  opacity: 1;
 }
 
 
@@ -276,14 +269,6 @@ body.restaurant-mode .hero {
 
   color: white;
 
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.2) 0%,
-      rgba(0, 0, 0, 0.35) 45%,
-      rgba(0, 0, 0, 0.82) 100%
-    ),
-    url("/IMG/Studio_Munge_Leuca_Michael_Stavaridis-(3).webp");
 
   background-size: cover;
   background-position: center;
@@ -3007,9 +2992,7 @@ select:focus-visible {
 
 /* =========================================================
    45. MOBILE — MAX 600PX
-   ========================================================= */
-
-@media (max-width: 600px) {
+   ========================================================= *
 
   /* ---------- Restaurant ---------- */
 
@@ -3018,12 +3001,12 @@ select:focus-visible {
   }
 
   body.restaurant-mode .brand-name {
-    height: 34px;
+    height: 30px;
   }
 
   body.restaurant-mode .brand-name span {
-    font-size: 12px;
-    letter-spacing: 1.5px;
+    font-size: 13px;
+    letter-spacing: 1px;
   }
 
   body.restaurant-mode .brand-name::after {
@@ -3347,7 +3330,7 @@ select:focus-visible {
 
     font-size: 0.65rem;
   }
-}
+
 
 
 /* =========================================================
@@ -3442,4 +3425,47 @@ select:focus-visible {
 .orders-disabled-message span {
   font-size: 14px;
   opacity: 0.7;
+}
+
+body.restaurant-mode .brand-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  width: 100%;
+  box-sizing:border-box;
+
+  padding: 0.1px 0.1px;
+  font-size: 13px;
+  font-weight: 100;
+
+  text-align: center;
+}
+
+body.restaurant-mode .plato-contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 3px 6px;
+
+  border-radius: 999px;
+
+  background: #ff8800;
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 1000;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+body.restaurant-mode .plato-contact-button:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
 }

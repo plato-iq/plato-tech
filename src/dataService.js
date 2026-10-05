@@ -19,6 +19,7 @@ export function getRestaurantSettings(slug) {
     location: restaurant.location,
     logo: restaurant.logo,
     logoImage: restaurant.logoImage,
+    heroImage: restaurant.heroImage,
     branchesEnabled: restaurant.branchesEnabled,
     branches: restaurant.branches || [],
     theme: restaurant.theme,

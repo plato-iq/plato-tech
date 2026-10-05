@@ -2,7 +2,7 @@ const DEFAULT_RESTAURANT_SETTINGS = {
   branchesEnabled: false,
   branches: [],
   theme: {
-    primary: "#7c3aed",
+    primary: "#00ff55",
     dark: "#171717",
   },
   timezone: "Asia/Baghdad",
@@ -118,11 +118,16 @@ const restaurants = [
     location: "https://maps.app.goo.gl/mxJWrzvZRNE1VjkU6",
     logo: "CH",
     logoImage: "/logos/1.jpg",
+heroImage: "/IMG/0.jpg",
+    theme: {
+    primary: "#00ff62",
+    dark: "#171717",
+  },
 
     orderingHours: {
   enabled: true,
-  start: "15:00",
-  end: "23:00",
+  start: "09:00",
+  end: "23:59",
 },
 
     branchesEnabled: true,
@@ -147,12 +152,7 @@ const restaurants = [
         location: "https://maps.app.goo.gl/UBaXso4jnComYST58",
       },
     ],
-
-    theme: {
-      primary: "#7c3aed",
-      dark: "#171717",
-    },
-
+    
     currency: "د.ع",
     orderEnabled: true,
   }),
@@ -165,8 +165,9 @@ const restaurants = [
   location: "https://maps.app.goo.gl/Z69x37WkCz8pX4MDA",
   logo: "AZ",
   logoImage: "/logos/55.png",
+  heroImage: "/IMG/22.jpg",
  orderingHours: {
-  enabled: false,
+  enabled: true,
   start: "09:00",
   end: "23:59",
 },
