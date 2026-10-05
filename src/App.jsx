@@ -193,6 +193,9 @@ const [whatsappUrl, setWhatsappUrl] = useState("");
   const [address, setAddress] = useState("");
   const [notes, setNotes] = useState("");
   const [selectedBranch, setSelectedBranch] = useState("");
+  if (window.location.pathname === "/") {
+    return <PlatoHome />;
+  }
   const currentDayName =
   getCurrentOrderingDay(selectedRestaurant);
 
@@ -207,9 +210,7 @@ function handleOrderTypeChange(type) {
     setSelectedBranch("");
   }
 }
-  if (window.location.pathname === "/") {
-    return <PlatoHome />;
-  }
+  
 
   if (!selectedRestaurant) {
     return (
@@ -554,8 +555,8 @@ setShowCheckout(false);
     </div>
 
   </div>
+  
 </header>
-
       {/* =========================
           MAIN MENU
       ========================== */}

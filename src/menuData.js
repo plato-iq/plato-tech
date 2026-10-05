@@ -1,4 +1,171 @@
 const menus = {
+"abu-zaid": [
+ {
+      id: "abu-zaid-grills",
+      name: "المشاوي",
+      order: 1, 
+      items: [
+        {
+          id: "az-001",
+          name: "كباب لحم",
+          description: "لحم، طماطم، بصل وصوص خاص",
+          price: 4000,
+          image:
+            "/IMG/33.jpg",
+          imageAlt: "كباب لحم",
+          available: true,
+          orderEnabled: true,
+          order: 1,
+        },
+      {
+          id: "az-002",
+          name: "كباب دجاج",
+          description: "دجاج، طماطم، بصل وصوص خاص",
+          price: 3000,
+          image:
+            "/IMG/11.jpg",
+          imageAlt: "كباب دجاج",
+          available: true,
+          orderEnabled: true,
+          order: 2,
+        },
+
+      {
+          id: "az-003",
+          name: "شيش طاووق",
+          description: "شيش طاووق، طماطم، بصل وصوص خاص",
+          price: 4000,
+          image:
+            "/IMG/44.jpg",
+          imageAlt: "شيش طاووق",
+          available: true,
+          orderEnabled: true,
+          order: 3,
+        },
+
+        {
+          id: "az-004",
+          name: "مشكل مشاوي",
+          description: "مشكل مشاوي، طماطم، بصل وصوص خاص",
+          price: 4000,
+          image:
+            "/IMG/66.jpg",
+          imageAlt: "مشكل مشاوي",
+          available: true,
+          orderEnabled: true,
+          order: 4,
+        },
+
+        {
+          id: "az-005",
+          name: "عرايس لحم",
+          description: "عرايس لحم، طماطم، بصل وصوص خاص",
+          price: 4000,
+          image:
+            "/IMG/22.jpg",
+          imageAlt: "عرايس لحم",
+          available: true,
+          orderEnabled: true,
+          order: 5,
+        },
+
+      ],
+      
+      },
+
+      {
+      id: "abu-zaid-burgers",
+      name: "البرجر",
+      order: 6, 
+      items: [
+        {
+          id: "az-006",
+          name: "كلاسك برجر لحم",
+          description: "لحم، خس، طماطم وصوص خاص",
+          price: 5000,
+          image:
+            "/IMG/0.jpg",
+          imageAlt: "كلاسك برجر لحم",
+          available: true,
+          orderEnabled: true,
+          order: 6,
+        },
+
+        {
+          id: "az-007",
+          name: "كلاسك برجر دجاج",
+          description: "دجاج، خس، طماطم وصوص خاص",
+          price: 5000,
+          image:
+            "/IMG/e4fe5aee781011860817443313aa324e_w750_h500.jpg",
+          imageAlt: "كلاسك برجر دجاج",
+          available: true,
+          orderEnabled: true,
+          order: 7,
+        },
+
+        {
+          id: "az-008",
+          name: "دبل برجر لحم",
+          description: "شريحتين لحم، خس， طماطم وصوص خاص  ",
+          price: 5000,
+          image:
+            "/IMG/000.jpg",
+          imageAlt: "دبل برجر لحم",
+          available: true,
+          orderEnabled: true,
+          order:8,
+        },
+      ]
+      },
+
+      {
+      id: "abu-zaid-eastern",
+      name: "الشرقية",
+      order: 6, 
+      items: [
+    {
+          id: "az-009",
+          name: "قوزي",
+          description: "قطعة لحم، صحن رز, طماطم وصوص خاص  ",
+          price: 10000,
+          image:
+            "/IMG/d982d988d8b2d98a1.jpg",
+          imageAlt: "قوزي",
+          available: true,
+          orderEnabled: true,
+          order: 9,
+        },
+{
+          id: "az-010",
+          name: "كبسة دجاج",
+          description: "قطعة دجاج، صحن رز, طماطم وصوص خاص  ",
+          price: 10000,
+          image:
+            "/IMG/0861A3F4-83C1-4494-A05B-42DD44E999A7.jpeg",
+          imageAlt: "كبسة دجاج",
+          available: true,
+          orderEnabled: true,
+          order: 10,
+        },
+{
+          id: "az-011",
+          name: " تمن وقيمة",
+          description: "مرقة قيمة، صحن رز, طماطم وصوص خاص  ",
+          price: 10000,
+          image:
+            "/IMG/b7e0508e42ec31bc574b187a096cfc9e.jpg",
+          imageAlt: " تمن وقيمة",
+          available: true,
+          orderEnabled: true,
+          order: 11,
+        },
+      ],
+      
+      }
+
+],
+
   "chef-bashar": [
     {
       id: "chef-bashar-burgers",
@@ -176,61 +343,7 @@ const menus = {
       ],
     },
   ],
-    "test-restaurant": [
-    {
-      id: "test-burgers",
-      name: "برجر",
-      order: 1,
 
-      items: [
-        {
-          id: "test-001",
-          name: "كلاسيك برجر",
-          description: "لحم، خس، طماطم وصوص خاص",
-          price: 4000,
-          image:
-            "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
-          imageAlt: "كلاسيك برجر",
-          available: true,
-          orderEnabled: true,
-          order: 1,
-        },
-        {
-          id: "test-002",
-          name: "تشيز برجر",
-          description: "لحم، جبن، خس وطماطم",
-          price: 5000,
-          image:
-            "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600",
-          imageAlt: "تشيز برجر",
-          available: true,
-          orderEnabled: true,
-          order: 2,
-        },
-      ],
-    },
-
-    {
-      id: "test-drinks",
-      name: "مشروبات",
-      order: 2,
-
-      items: [
-        {
-          id: "test-003",
-          name: "بيبسي",
-          description: "بيبسي بارد",
-          price: 500,
-          image:
-            "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=600",
-          imageAlt: "بيبسي",
-          available: true,
-          orderEnabled: true,
-          order: 1,
-        },
-      ],
-    },
-  ],
 };
 
 function getMenuBySlug(slug) {

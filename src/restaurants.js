@@ -158,16 +158,34 @@ const restaurants = [
   }),
 
   createRestaurant({
-  slug: "test-restaurant",
-  name: "Test Restaurant",
-  description: "مطعم تجريبي لاختبار نظام PLATO TECH",
+  slug: "abu-zaid",
+  name: "مطعم أبو زيد",
+  description: " أبو زيد يقدم لكم أفضل الأطعمة العربية",
   phone: "9647722248374",
-  location: "https://maps.google.com",
-  logo: "TR",
-  logoImage: "",
+  location: "https://maps.app.goo.gl/Z69x37WkCz8pX4MDA",
+  logo: "AZ",
+  logoImage: "/logos/55.png",
+ orderingHours: {
+  enabled: false,
+  start: "09:00",
+  end: "23:59",
+},
+  branchesEnabled: true,
+  branches: [
+{
+        id: "abu-zaid-1",
+        name: "الفرع الرئيسي - شارع الجامعة",
+        phone: "9647722248374",
+        location: "https://maps.app.goo.gl/UBaXso4jnComYST58",
+      },
 
-  branchesEnabled: false,
-  branches: [],
+      {
+        id: "abu-zaid-2",
+        name: "الفرع الثاني - التحرير",
+        phone: "9647729511166",
+        location: "https://maps.app.goo.gl/E22C2G2T7Q5Y4i5o9",
+      },
+  ],
 
   theme: {
     primary: "#2563eb",
