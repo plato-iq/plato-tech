@@ -178,7 +178,7 @@ const menus = {
           description: "لحم، خس، طماطم وصوص خاص",
           price: 3000,
           image:
-            "/IMG/MEAT BURGER.png",
+            "/IMG/0.jpg",
           imageAlt: "كلاسك برجر لحم",
           available: true,
           orderEnabled: true,
@@ -191,7 +191,7 @@ const menus = {
           description: " لحم، جبن، طماطم خس وصوص خاص",
           price: 3500,
           image:
-            "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600",
+            "/IMG/77.jpg",
           imageAlt: "تشيز برجر لحم",
           available: true,
           orderEnabled: true,
@@ -202,9 +202,9 @@ const menus = {
           id: "ch-003",
           name: "تشيز برجر دجاج",
           description: " دجاج جبن، طماطم خس وصوص خاص",
-          price: 3000,
+          price: 3500,
           image:
-            "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600",
+            "/IMG/e4fe5aee781011860817443313aa324e_w750_h500.jpg",
           imageAlt: "تشيز برجر دجاج",
           available: true,
           orderEnabled: true,
@@ -217,7 +217,7 @@ const menus = {
           description: " دجاج طماطم خس وصوص خاص",
           price: 3000,
           image:
-            "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600",
+            "/IMG/e4fe5aee781011860817443313aa324e_w750_h500.jpg",
           imageAlt: " برجر دجاج",
           available: true,
           orderEnabled: true,
@@ -243,7 +243,7 @@ const menus = {
           description: " لحم جبن، طماطم خس وصوص خاص",
           price: 5000,
           image:
-            "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600",
+            "/IMG/000.jpg",
           imageAlt: "بركر الشيف بشار لحم",
           available: true,
           orderEnabled: true,
@@ -277,7 +277,7 @@ const menus = {
           description: "بطاطا مقلية مع صوص خاص",
           price: 1000,
           image:
-            "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600",
+            "/IMG/قدح_بطاطا_مقلية638989987915916419.jpg",
           imageAlt: "قدح صغير بطاطا",
           available: true,
           orderEnabled: true,
