@@ -2460,49 +2460,25 @@ body.plato-mode .plato-glow {
    35. PLATO LOGO
    ========================================================= */
 
-body.plato-mode .plato-logo {
-  position: relative;
-
-  font-size:
-    clamp(4rem, 12vw, 8rem);
-
-  font-weight: 900;
-
-  letter-spacing: 0.08em;
-
-  line-height: 1;
-
-  color: #ffffff;
-
-  text-shadow:
-    0 0 12px rgba(96, 165, 250, 0.45),
-    0 0 35px rgba(59, 130, 246, 0.28);
-
-  animation:
-    platoLogoIn 1.2s ease-out both;
+.plato-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-@keyframes platoLogoIn {
-  from {
-    opacity: 0;
-
-    transform:
-      translateY(18px)
-      scale(0.96);
-
-    filter: blur(8px);
-  }
-
-  to {
-    opacity: 1;
-
-    transform:
-      translateY(0)
-      scale(1);
-
-    filter: blur(0);
-  }
+.plato-logo img {
+  width: 580px;
+  height: 580px;
+  display: block;
+  object-fit: contain;
 }
+
+.plato-logo span {
+  display: block;
+}
+
 
 
 /* =========================================================
@@ -3253,6 +3229,33 @@ body.restaurant-mode .footer-social:hover {
 }
 
    @media (max-width: 600px) {
+    .plato-logo img {
+  width: 500px;
+  height: 150px;
+    display: block;
+  object-fit: contain;
+
+  filter:
+    brightness(0)
+    invert(1);
+
+  animation:
+    platoMarkFloat 3.5s ease-in-out infinite;
+
+  transform-origin: center;
+}
+@keyframes platoMarkFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1.5);
+    opacity: 88;
+  }
+
+  50% {
+    transform: translateY(6px) scale(10);
+    opacity: 1;
+  }
+}
 body.restaurant-mode .footer-brand {
   font-size: 18px;
   font-weight: 700;
@@ -4365,4 +4368,3 @@ body.restaurant-mode .plato-contact-button:hover {
   transform: translateY(-1px);
   opacity: 0.9;
 }
-

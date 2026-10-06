@@ -31,7 +31,12 @@ function PlatoHome() {
       <div className="plato-glow plato-glow-two"></div>
 
       <main className="plato-content">
-        <div className="plato-logo">PLATO</div>
+        <div className="plato-logo"> <img
+    src="https://platotech.pages.dev/assets/plato-mark.svg"
+    alt=""
+  />
+  <span>PLATO</span>
+  </div>
 
         <svg
           className="plato-network"
