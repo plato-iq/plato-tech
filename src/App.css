@@ -3254,15 +3254,20 @@ body.restaurant-mode .footer-social:hover {
 
    @media (max-width: 600px) {
 body.restaurant-mode .footer-brand {
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: underline;
   gap: 9px;
+  margin-top: -40px;
+  align-items: center;
+  transform: translateX(10px);
 }
 
 body.restaurant-mode .footer-brand img {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   opacity: 1000;
+  
 }
 
 body.restaurant-mode .footer-brand strong {
@@ -3272,16 +3277,23 @@ body.restaurant-mode .footer-brand strong {
 body.restaurant-mode .footer-socials {
   gap: 12px;
   margin-top: 5px;
+    transform: translate(2px,-5px);
+  align-items: center;
+
 }
 body.restaurant-mode .footer-social {
   width: 38px;
   height: 38px;
   flex-basis: 38px;
+    align-items: center;
+
 }
 body.restaurant-mode .footer-social svg {
   width: 24px;
   height: 24px;
   flex-basis: 24px;
+    align-items: center;
+
 }
   /* ---------- Restaurant ---------- */
 

@@ -771,7 +771,7 @@ setShowCheckout(false);
   <div className="footer-main">
 
     <a
-      href="https://platotech.pages.dev/"
+      href="https://iraq-menu.pages.dev/"
       target="_blank"
       rel="noreferrer"
       className="footer-brand"
