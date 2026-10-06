@@ -6,38 +6,75 @@
   "https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
 );
 
-/* =========================================================
-   1. ROOT VARIABLES
-   ========================================================= */
-
 :root {
+  /* =========================================================
+     RESTAURANT THEME
+     ========================================================= */
+
   --primary: var(--restaurant-primary, #ff5a36);
-  --primary-dark: #e94725;
-  --primary-light: #fff1ec;
 
-  --dark: #171717;
-  --dark-soft: #292929;
+  /* Accent variations */
+  --primary-dark: color-mix(
+    in srgb,
+    var(--primary) 82%,
+    #000 18%
+  );
 
-  --text: #202020;
-  --text-soft: #747474;
+  --primary-soft: color-mix(
+    in srgb,
+    var(--primary) 10%,
+    #fff 90%
+  );
 
-  --background: #f7f7f8;
+  --primary-light: color-mix(
+    in srgb,
+    var(--primary) 7%,
+    #fff 93%
+  );
+
+  /* =========================================================
+     SURFACES
+     ========================================================= */
+
+  --dark: #111111;
+  --dark-soft: #1c1c1c;
+
+  --text: #181818;
+  --text-soft: #6f6f6f;
+
+  --background: #f3f2ef;
   --white: #ffffff;
 
-  --border: #ececec;
+  /* =========================================================
+     BORDERS
+     ========================================================= */
+
+  --border: rgba(18, 18, 18, 0.075);
+
+  /* =========================================================
+     SHADOWS
+     ========================================================= */
 
   --shadow-sm:
-    0 4px 14px rgba(0, 0, 0, 0.05);
+    0 2px 10px rgba(0, 0, 0, 0.035);
 
   --shadow-md:
-    0 10px 30px rgba(0, 0, 0, 0.08);
+    0 8px 24px rgba(0, 0, 0, 0.055);
 
   --shadow-lg:
-    0 20px 60px rgba(0, 0, 0, 0.16);
+    0 18px 50px rgba(0, 0, 0, 0.10);
+
+  /* =========================================================
+     RADIUS
+     ========================================================= */
 
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 22px;
+
+  /* =========================================================
+     MOTION
+     ========================================================= */
 
   --transition:
     220ms cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -69,12 +106,16 @@ body {
   min-height: 100vh;
 
   background:
-    radial-gradient(
-      circle at top right,
-      rgba(255, 90, 54, 0.05),
-      transparent 30%
+     radial-gradient(
+    circle at top right,
+    color-mix(
+      in srgb,
+      var(--primary) 4%,
+      transparent
     ),
-    var(--background);
+    transparent 30%
+  ),
+  var(--background);
 
   color: var(--text);
 
@@ -634,43 +675,50 @@ body.restaurant-mode .cats-in button:active {
 /* =========================================================
    13. CATEGORY
    ========================================================= */
-
 body.restaurant-mode .category {
+  position: relative;
   scroll-margin-top: 95px;
-
-  margin-bottom: 42px;
+  margin-bottom: 46px;
+  padding: 4px 0 10px;
 
   animation:
     categoryAppear 600ms
     ease both;
 }
 
-@keyframes categoryAppear {
-  from {
-    opacity: 0;
+body.restaurant-mode .category::after {
+  content: "";
+  position: absolute;
+  top: -18px;
+  bottom: -18px;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
 
-    transform:
-      translateY(15px);
-  }
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.72),
+      rgba(255, 255, 255, 0.96)
+    );
 
-  to {
-    opacity: 1;
+  border-top: 1px solid rgba(20, 20, 20, 0.035);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.035);
 
-    transform:
-      translateY(0);
-  }
+  z-index: -1;
+  pointer-events: none;
 }
 
 body.restaurant-mode .category h2 {
   position: relative;
+  margin: 0 0 17px;
+  padding-right: 14px;
 
-  margin: 0 0 16px;
-
-  padding-right: 13px;
-
+  color: #171717;
   font-size: 23px;
-
+  line-height: 1.35;
   font-weight: 800;
+  letter-spacing: -0.2px;
 }
 
 body.restaurant-mode .category h2::before {
@@ -683,7 +731,7 @@ body.restaurant-mode .category h2::before {
   top: 50%;
 
   width: 4px;
-  height: 25px;
+  height: 24px;
 
   transform: translateY(-50%);
 
@@ -691,12 +739,15 @@ body.restaurant-mode .category h2::before {
 
   background:
     linear-gradient(
-      to bottom,
+      180deg,
       var(--primary),
-      #ff8b72
+      color-mix(
+        in srgb,
+        var(--primary) 55%,
+        #ffffff
+      )
     );
 }
-
 
 /* =========================================================
    14. PRODUCTS
@@ -3085,8 +3136,11 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
   outline:
-    3px solid
-    rgba(255, 90, 54, 0.35);
+  3px solid
+    color-mix(
+      in srgb,
+      var(--primary) 35%,
+      transparent);
 
   outline-offset: 2px;
 }
@@ -3126,8 +3180,6 @@ body.restaurant-mode .hero {
   align-items: flex-end;
 
   background-position: center center;
-
-  border-radius: 0 0 28px 28px;
 
   isolation: isolate;
 
@@ -3180,7 +3232,7 @@ body.restaurant-mode .hero h1 {
 
   line-height: 1.15;
 
-  font-weight: 800;
+  font-weight: 1000;
 
   letter-spacing: -0.5px;
 
@@ -3206,6 +3258,7 @@ body.restaurant-mode .hero p {
     15px auto 12px;
 
   font-size: 15px;
+  font-weight: 500;
 
   line-height: 1.7;
 
@@ -3232,29 +3285,55 @@ body.restaurant-mode .actions {
 
 body.restaurant-mode .actions a,
 body.restaurant-mode .actions button {
-  min-height: 38px;
+  min-height: 40px;
 
-  padding:
-    10px 10px;
+  padding: 0 17px;
 
-  font-size: 14px;
-font-weight: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
 
-background: #ff8800;
+  background: rgba(255, 255, 255, 0.94);
+  color: #151515;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
 
   box-shadow:
-    0 7px 20px rgba(0, 0, 0, 0.16);;
+    0 8px 24px rgba(0, 0, 0, 0.18);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
 }
 
+body.restaurant-mode .actions a:hover,
+body.restaurant-mode .actions button:hover {
+  transform: translateY(-1px);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+body.restaurant-mode .actions a:active,
+body.restaurant-mode .actions button:active {
+  transform: scale(0.97);
+}
 /* Mobile hero fade */
 body.restaurant-mode .hero::after {
-  height: 95px;
+  height: 9px;
 
   background:
     linear-gradient(
       to bottom,
       transparent,
-      #f7f7f8
+      #ffffff
     );
 
   z-index: 1;
@@ -3265,67 +3344,6 @@ body.restaurant-mode .app main {
   width:
     calc(100% - 20px);
 }
- body.restaurant-mode .buttons {
-    width: 100%;
-
-    display: flex;
-
-    gap: 9px;
-
-    flex-wrap: nowrap;
-
-    justify-content: center;
-  }
-
-  body.restaurant-mode .buttons a,
-  body.restaurant-mode .buttons button {
-    min-width: 10px;
-
-    min-height: 40px;
-
-    padding:
-      5px 5px;
-
-    border:
-      1px solid rgba(23, 23, 23, 0.407);
-
-    border-radius: 14px;
-
-    background:
-      rgb(255, 119, 0);
-
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-
-    color: #ffffff;
-
-    font-size: 15px;
-
-    font-weight: 1000;
-
-    box-shadow:
-      0 8px 24px rgba(0, 0, 0, 0.18),
-      inset 0 1px 0
-      rgba(255, 255, 255, 0.12);
-  }
-
-  body.restaurant-mode .buttons a:hover,
-  body.restaurant-mode .buttons button:hover {
-    transform: none;
-
-    background:
-      rgba(255, 255, 255, 0.20);
-
-    box-shadow:
-      0 8px 24px rgba(0, 0, 0, 0.18),
-      inset 0 1px 0
-      rgba(255, 255, 255, 0.14);
-  }
-
-  body.restaurant-mode .buttons a:active,
-  body.restaurant-mode .buttons button:active {
-    transform: scale(0.97);
-  }
 
   /* =========================================================
    MOBILE — CATEGORY NAVIGATION
@@ -3336,19 +3354,21 @@ body.restaurant-mode .cats {
   top: 0;
   z-index: 100;
 
-  width: 100%;
+  width: 100vw;
+  margin-right: calc(50% - 50vw);
+  margin-left: calc(50% - 50vw);
 
   margin-bottom: 20px;
 
-  background:
-    rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.88);
 
-  border-bottom:
-    1px solid rgba(0, 0, 0, 0.06);
-    border-radius:10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 0;
 
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+
+  box-sizing: border-box;
 }
 
 body.restaurant-mode .cats-in {
@@ -3377,37 +3397,28 @@ body.restaurant-mode .cats-in::-webkit-scrollbar {
 }
 
 body.restaurant-mode .cats-in button {
-  flex:
-    0 0 auto;
+  flex: 0 0 auto;
 
   min-height: 38px;
 
-  padding:
-    0 15px;
+  padding: 0 16px;
 
-  border:
-    1px solid rgba(0, 0, 0, 0.201);
-
+  border: 1px solid rgba(20, 20, 20, 0.07);
   border-radius: 999px;
 
-  background:
-    #ffffff;
-
-  color:
-    var(--text);
+  background: rgba(255, 255, 255, 0.96);
+  color: #555555;
 
   font-family: inherit;
-
   font-size: 13px;
-
-  font-weight: 1000;
+  font-weight: 700;
 
   white-space: nowrap;
 
   cursor: pointer;
 
   box-shadow:
-    0 3px 10px rgba(0, 0, 0, 0.088);
+    0 2px 8px rgba(0, 0, 0, 0.035);
 
   transition:
     background 180ms ease,
@@ -3418,23 +3429,52 @@ body.restaurant-mode .cats-in button {
 }
 
 body.restaurant-mode .cats-in button:hover {
-  transform:
-    translateY(-1px);
+  transform: translateY(-1px);
 
   border-color:
-    var(--primary);
+    color-mix(
+      in srgb,
+      var(--primary) 25%,
+      transparent
+    );
+
+  background:
+    var(--primary-light);
 
   color:
     var(--primary);
+
+  box-shadow:
+    0 4px 12px
+    color-mix(
+      in srgb,
+      var(--primary) 8%,
+      transparent
+    );
 }
 
 body.restaurant-mode .cats-in button:active {
-  transform:
-    scale(0.96);
+  transform: scale(0.97);
 }
-  body.restaurant-mode .category h2 {
-    font-size: 21px;
-  }
+
+body.restaurant-mode .category {
+  margin-bottom: 38px;
+  padding: 2px 0 8px;
+}
+
+body.restaurant-mode .category::after {
+  top: -14px;
+  bottom: -14px;
+}
+
+body.restaurant-mode .category h2 {
+  margin-bottom: 14px;
+  padding-right: 12px;
+
+  font-size: 19px;
+  line-height: 1.4;
+  font-weight: 800;
+}
 
  body.restaurant-mode .item {
   min-height: 125px;
@@ -3489,11 +3529,13 @@ body.restaurant-mode .item-media img {
 }
 
 body.restaurant-mode .item-content {
-  padding: 12px;
+  padding: 13px 14px;
 }
 
 body.restaurant-mode .item-main h3 {
   font-size: 15px;
+   font-weight: 800;
+  color: #171717;
 }
 
 body.restaurant-mode .item-main p {
@@ -3513,15 +3555,31 @@ body.restaurant-mode .item-bottom {
 }
 
 body.restaurant-mode .item-price {
-  font-size: 17px;
+ font-size: 16px;
+  font-weight: 1000;
+  color: var(--primary);
 }
 
 body.restaurant-mode .item-add {
-  min-height: 35px;
+ min-height: 36px;
 
-  padding: 0 11px;
+  padding: 0 13px;
 
-  font-size: 13px;
+  border-radius: 11px;
+
+  background: var(--primary);
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  box-shadow:
+    0 5px 14px
+    color-mix(
+      in srgb,
+      var(--primary) 18%,
+      transparent
+    );
 }
 
 body.restaurant-mode .stepper button {
@@ -3533,32 +3591,112 @@ body.restaurant-mode .stepper span {
   min-width: 24px;
 }
 
-  /* ---------- Cart ---------- */
+ /* =========================================================
+   MOBILE — CART
+   ========================================================= */
 
-  body.restaurant-mode .cart {
-    bottom: 8px;
+body.restaurant-mode .cart {
+  position: fixed;
+  left: 50%;
+  bottom: 8px;
+  z-index: 200;
 
-    width:
-      calc(100% - 16px);
+  width: calc(100% - 16px);
+  max-width: 520px;
 
-    padding:
-      10px 12px 12px;
+  padding: 10px 12px 12px;
 
-    border-radius: 17px;
-  }
+  transform: translateX(-50%);
 
-  body.restaurant-mode .cart-total-info {
-    gap: 7px;
-  }
+  border: 1px solid rgba(0, 0, 0, 0.055);
+  border-radius: 18px;
 
-  body.restaurant-mode .cart-title {
-    font-size: 14px;
-  }
+  background:
+    rgba(255, 255, 255, 0.94);
 
-  body.restaurant-mode .cart-total {
-    font-size: 16px;
-  }
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.14),
+    0 3px 12px rgba(0, 0, 0, 0.06);
 
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-sizing: border-box;
+}
+
+body.restaurant-mode .cart-total-info {
+  gap: 7px;
+}
+
+body.restaurant-mode .cart-title {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+body.restaurant-mode .cart-total {
+  font-size: 20px;
+  font-weight: 1000;
+  color: #1c1c1c;
+}
+
+body.restaurant-mode .checkout-button {
+  min-height: 48px;
+  padding: 12px 14px;
+
+  border-radius: 13px;
+
+  background: var(--primary);
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+
+  box-shadow:
+    0 7px 18px
+    color-mix(
+      in srgb,
+      var(--primary) 20%,
+      transparent
+    );
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+body.restaurant-mode .checkout-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+
+  box-shadow:
+    0 10px 24px
+    color-mix(
+      in srgb,
+      var(--primary) 24%,
+      transparent
+    );
+}
+
+body.restaurant-mode .checkout-button:active {
+  transform: scale(0.98);
+}
+
+body.restaurant-mode .cart-item {
+  align-items: flex-start;
+}
+
+body.restaurant-mode .quantity-controls {
+  gap: 4px;
+}
+
+body.restaurant-mode .quantity-controls button {
+  width: 30px;
+  height: 30px;
+
+  border-radius: 9px;
+}
   body.restaurant-mode .checkout-button {
     min-height: 48px;
 
@@ -3581,29 +3719,159 @@ body.restaurant-mode .stepper span {
   }
 
 
-  /* ---------- Checkout ---------- */
+ /* =========================================================
+   MOBILE — CHECKOUT
+   ========================================================= */
 
-  body.restaurant-mode .checkout-overlay {
-    padding: 10px;
-  }
+body.restaurant-mode .checkout-overlay {
+  padding: 10px;
+  background:
+    rgba(8, 8, 8, 0.48);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
 
-  body.restaurant-mode .checkout {
-    max-height: 94vh;
+body.restaurant-mode .checkout {
+  width: 100%;
+  max-width: 520px;
+  max-height: 94vh;
 
-    padding: 18px;
+  padding: 20px 18px;
 
-    border-radius: 19px;
-  }
+  border:
+    1px solid rgba(0, 0, 0, 0.055);
 
-  body.restaurant-mode .checkout-header h2 {
-    font-size: 21px;
-  }
+  border-radius: 20px;
 
-  body.restaurant-mode .order-types button {
-    font-size: 12px;
-  }
+  background: #ffffff;
 
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.20);
 
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+body.restaurant-mode .checkout-header {
+  margin-bottom: 18px;
+}
+
+body.restaurant-mode .checkout-header h2 {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.35;
+  font-weight: 900;
+  color: #171717;
+}
+
+body.restaurant-mode .checkout-header p {
+  margin-top: 5px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #777777;
+}
+
+body.restaurant-mode .order-types {
+  gap: 8px;
+}
+
+body.restaurant-mode .order-types button {
+  min-height: 44px;
+
+  padding:
+    8px 12px;
+
+  border:
+    1px solid rgba(0, 0, 0, 0.07);
+
+  border-radius: 12px;
+
+  background: #f7f7f8;
+
+  color: #555555;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+body.restaurant-mode .order-types button:hover {
+  transform: translateY(-1px);
+}
+
+body.restaurant-mode .order-types button.active,
+body.restaurant-mode .order-types button[aria-pressed="true"] {
+  border-color:
+    color-mix(
+      in srgb,
+      var(--primary) 25%,
+      transparent
+    );
+
+  background:
+    var(--primary-light);
+
+  color:
+    var(--primary);
+}
+
+body.restaurant-mode .checkout input,
+body.restaurant-mode .checkout textarea,
+body.restaurant-mode .checkout select {
+  min-height: 46px;
+
+  border:
+    1px solid rgba(0, 0, 0, 0.09);
+
+  border-radius: 12px;
+
+  background: #fafafa;
+
+  color: #202020;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+body.restaurant-mode .checkout textarea {
+  min-height: 90px;
+  padding-top: 12px;
+  resize: vertical;
+}
+
+body.restaurant-mode .checkout input:focus,
+body.restaurant-mode .checkout textarea:focus,
+body.restaurant-mode .checkout select:focus {
+  border-color:
+    color-mix(
+      in srgb,
+      var(--primary) 45%,
+      #ffffff
+    );
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--primary) 10%,
+      transparent
+    );
+
+  outline: none;
+}
   /* ---------- Success ---------- */
 
   body.restaurant-mode .order-success-overlay {
