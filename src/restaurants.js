@@ -120,7 +120,7 @@ const restaurants = [
     logoImage: "/logos/1.jpg",
 heroImage: "/IMG/tanja-tepavac-jSH-7IjJVsQ-unsplash.jpg",
     theme: {
-    primary: "#00ff62",
+    primary: "#ff5900",
     dark: "#171717",
   },
 
@@ -189,8 +189,8 @@ heroImage: "/IMG/tanja-tepavac-jSH-7IjJVsQ-unsplash.jpg",
   ],
 
   theme: {
-    primary: "#2563eb",
-    dark: "#111827",
+    primary: "#ff5900",
+    dark: "#1b1b1c",
   },
 
   currency: "د.ع",

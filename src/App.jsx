@@ -221,7 +221,7 @@ function handleOrderTypeChange(type) {
     return (
       <div className="app"
        style={{
-     "--restaurant-primary": restaurantTheme.primary,
+     "--primary": restaurantTheme.primary,
     "--restaurant-dark": restaurantTheme.dark,
   }}>
         <main
@@ -506,7 +506,7 @@ setShowCheckout(false);
   return (
     <div className="app"
      style={{
-        "--restaurant-primary": restaurantTheme.primary,
+        "--primary": restaurantTheme.primary,
         "--restaurant-dark": restaurantTheme.dark,
       }}>
 
