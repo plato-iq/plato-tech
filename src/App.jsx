@@ -518,68 +518,97 @@ setShowCheckout(false);
       {/* =========================
           HEADER / COVER
       ========================== */}
+<header
+  className="hero"
+  style={{
+    backgroundImage: selectedRestaurant.heroImage
+      ? `
+        linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.15) 0%,
+          rgba(0, 0, 0, 0.35) 45%,
+          rgba(0, 0, 0, 0.92) 100%
+        ),
+        url("${selectedRestaurant.heroImage}")
+      `
+      : "none",
+  }}
+>
+  <div className="wrap hero-in">
+    <div className="hero-id">
+      <div className="logo">
+        {selectedRestaurant.logoImage ? (
+          <img
+            src={selectedRestaurant.logoImage}
+            alt={selectedRestaurant.name}
+          />
+        ) : (
+          selectedRestaurant.logo
+        )}
+      </div>
 
-<header className="hero"
-style={{
-    backgroundImage: `
-      linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.2) 0%,
-        rgba(0, 0, 0, 0.35) 45%,
-        rgb(0, 0, 0) 100%
-      ),
-      url("${selectedRestaurant.heroImage}")
-    `,
-  }} >
-  <div className="hero-overlay">
+      <div>
+        <h1>{selectedRestaurant.name}</h1>
 
-    <div className="logo">
-      {selectedRestaurant.logoImage ? (
-        <img
-          src={selectedRestaurant.logoImage}
-          alt={selectedRestaurant.name}
-        />
-      ) : (
-        selectedRestaurant.logo
-      )}
+        {selectedRestaurant.nameEn && (
+          <div className="name-en">
+            {selectedRestaurant.nameEn}
+          </div>
+        )}
+      </div>
     </div>
-
-    <h1>{selectedRestaurant.name}</h1>
 
     <p>{selectedRestaurant.description}</p>
 
-    <div className="buttons">
+    <div className="meta">
+      {selectedRestaurant.city && (
+        <span>{selectedRestaurant.city}</span>
+      )}
 
-      <a
-        href={`https://wa.me/${selectedRestaurant.phone}`}
-        target="_blank"
-        rel="noreferrer"
-      >
-        تواصل معنا
-      </a>
+      {selectedRestaurant.city &&
+        selectedRestaurant.hours && (
+          <span>•</span>
+        )}
 
-      <div className="location-button-wrapper">
-
-        <button
-          type="button"
-          onClick={() => {
-            window.open(
-              selectedRestaurant.location,
-              "_blank",
-              "noopener,noreferrer"
-            );
-          }}
-        >
-          موقع المطعم
-        </button>
-
-      </div>
-
+      {selectedRestaurant.hours && (
+        <span>{selectedRestaurant.hours}</span>
+      )}
     </div>
 
+    <div className="actions">
+      {selectedRestaurant.phone && (
+        <a
+          href={`https://wa.me/${selectedRestaurant.phone}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          تواصل معنا
+        </a>
+      )}
+
+      {selectedRestaurant.location && (
+        <a
+          href={selectedRestaurant.location}
+          target="_blank"
+          rel="noreferrer"
+        >
+          موقع المطعم
+        </a>
+      )}
+
+      {selectedRestaurant.instagram && (
+        <a
+          href={selectedRestaurant.instagram}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Instagram
+        </a>
+      )}
+    </div>
   </div>
-  
 </header>
+
       {/* =========================
           MAIN MENU
       ========================== */}
@@ -610,29 +639,30 @@ style={{
     )}
   </div>
 ) : null}
-        <div className="categories">
-          {selectedMenu.map((category) => (
-            <button
-              key={category.name}
-              onClick={() => {
-                const element =
-                  document.getElementById(
-                    `category-${category.name}`
-                  );
+        <nav className="cats" aria-label="تصنيفات المنيو">
+  <div className="wrap cats-in">
+    {selectedMenu.map((category) => (
+      <button
+        type="button"
+        key={category.name}
+        onClick={() => {
+          const element = document.getElementById(
+            `category-${category.name}`
+          );
 
-                if (element) {
-                  element.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  });
-                }
-              }}
-            >
-              {category.name}
-            </button>
-          ))}
-        </div>
-
+          if (element) {
+            element.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        }}
+      >
+        {category.name}
+      </button>
+    ))}
+  </div>
+</nav>
         {selectedMenu.map((category) => (
           <section
             key={category.name}
@@ -640,53 +670,110 @@ style={{
             className="category"
           >
             <h2>{category.name}</h2>
+<div className="products">
+  {category.items.map((item) => {
+    const cartItem = cart.find(
+      (cartItem) => cartItem.id === item.id
+    );
 
-            <div className="products">
-              {category.items.map((item) => (
-                <div
-                  className="product"
-                  key={item.id}
-                >
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                  />
+    const quantity = cartItem?.quantity || 0;
 
-                  <div className="product-info">
-                    <h3>{item.name}</h3>
-
-                    <p>{item.description}</p>
-
-                    <div className="product-bottom">
-                      <strong>
-                        {item.price.toLocaleString()} {selectedRestaurant.currency}
-                      </strong>
-
-{selectedRestaurant.orderEnabled &&  orderingOpen && (
-  <>
-    {!item.available ? (
-      <button type="button" disabled>
-        غير متوفر
-      </button>
-    ) : item.orderEnabled === false ? (
-      <button type="button" disabled>
-        الطلب متوقف
-      </button>
-    ) : (
-      <button
-        type="button"
-        onClick={() => addToCart(item)}
+    return (
+      <article
+        className="item"
+        key={item.id}
       >
-        أضف للسلة
-      </button>
-    )}
-  </>
-)}
-                    </div>
-                  </div>
+        <div className="item-media">
+          {item.image ? (
+            <img
+              src={item.image}
+              alt={item.name}
+              loading="lazy"
+            />
+          ) : (
+            <div className="item-placeholder" />
+          )}
+
+          {item.badge && (
+            <span className="item-badge">
+              {item.badge}
+            </span>
+          )}
+        </div>
+
+        <div className="item-content">
+          <div className="item-main">
+            <h3>{item.name}</h3>
+
+            {item.description && (
+              <p>{item.description}</p>
+            )}
+          </div>
+
+          <div className="item-bottom">
+            <strong className="item-price">
+              {item.price.toLocaleString()}{" "}
+              {selectedRestaurant.currency}
+            </strong>
+
+            {selectedRestaurant.orderEnabled &&
+            orderingOpen ? (
+              item.available === false ? (
+                <button
+                  type="button"
+                  className="item-add"
+                  disabled
+                >
+                  غير متوفر
+                </button>
+              ) : item.orderEnabled === false ? (
+                <button
+                  type="button"
+                  className="item-add"
+                  disabled
+                >
+                  الطلب متوقف
+                </button>
+              ) : quantity === 0 ? (
+                <button
+                  type="button"
+                  className="item-add"
+                  onClick={() => addToCart(item)}
+                >
+                  أضف للسلة
+                </button>
+              ) : (
+                <div className="stepper">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      increaseQuantity(item.id)
+                    }
+                    aria-label={`زيادة ${item.name}`}
+                  >
+                    +
+                  </button>
+
+                  <span>{quantity}</span>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      decreaseQuantity(item.id)
+                    }
+                    aria-label={`تقليل ${item.name}`}
+                  >
+                    −
+                  </button>
                 </div>
-              ))}
-            </div>
+              )
+            ) : null}
+          </div>
+        </div>
+      </article>
+    );
+  })}
+</div>
           </section>
         ))}
       </main>
