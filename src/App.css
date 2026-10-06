@@ -3174,56 +3174,86 @@ select:focus-visible {
    MOBILE — HERO
    ========================================================= */
 
+/* =========================================================
+   MOBILE — PREMIUM HERO
+   ========================================================= */
+
 body.restaurant-mode .hero {
-  min-height: 380px;
+  min-height: 400px;
 
   align-items: flex-end;
 
   background-position: center center;
-
   isolation: isolate;
 
   box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.14);
+    0 14px 38px rgba(0, 0, 0, 0.16);
 }
 
-/* Mobile hero content */
+body.restaurant-mode .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.04) 0%,
+      rgba(0, 0, 0, 0.16) 38%,
+      rgba(0, 0, 0, 0.72) 72%,
+      rgba(0, 0, 0, 0.94) 100%
+    );
+
+  pointer-events: none;
+}
+
 body.restaurant-mode .hero-in {
+  position: relative;
+  z-index: 2;
+
   width: 100%;
 
   padding:
-    0 18px 32px;
+    0 18px 34px;
 
   text-align: center;
 }
 
-/* Mobile identity */
 body.restaurant-mode .hero-id {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   gap: 0;
 }
 
 body.restaurant-mode .logo {
-  width: 120px;
-  height: 120px;
+  width: 112px;
+  height: 112px;
 
   margin:
-    0 auto 20px;
+    0 auto 18px;
+
+  border:
+    3px solid
+    rgba(255, 255, 255, 0.82);
 
   border-radius: 50%;
 
-  border:
-    3px solid rgba(255, 255, 255, 0.75);
-
   background:
-    rgba(0, 0, 0, 0.53);
+    rgba(10, 10, 10, 0.52);
 
   box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.28);
+    0 12px 34px rgba(0, 0, 0, 0.34),
+    0 0 0 7px rgba(255, 255, 255, 0.06);
 
   font-size: 20px;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* Mobile restaurant name */
 body.restaurant-mode .hero h1 {
   margin: 0;
 
@@ -3231,68 +3261,88 @@ body.restaurant-mode .hero h1 {
     clamp(28px, 8vw, 36px);
 
   line-height: 1.15;
+  font-weight: 900;
 
-  font-weight: 1000;
+  letter-spacing: -0.6px;
 
-  letter-spacing: -0.5px;
+  color: #ffffff;
 
   text-shadow:
-    0 4px 18px rgba(0, 0, 0, 0.45);
+    0 4px 20px rgba(0, 0, 0, 0.46);
 }
 
-/* English name */
 body.restaurant-mode .hero .name-en {
   margin-top: 5px;
 
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 0.7px;
 
   color:
-    rgba(255, 255, 255, 0.72);
+    rgba(255, 255, 255, 0.66);
 }
 
-/* Description */
 body.restaurant-mode .hero p {
-  max-width: 330px;
+  max-width: 340px;
 
   margin:
-    15px auto 12px;
+    14px auto 11px;
 
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
 
-  line-height: 1.7;
+  line-height: 1.75;
 
   color:
-    rgba(255, 255, 255, 0.84);
+    rgba(255, 255, 255, 0.82);
 }
 
-/* Meta */
 body.restaurant-mode .hero .meta {
-  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 17px;
 
   gap: 5px;
 
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 600;
 
   color:
-    rgba(255, 255, 255, 0.72);
+    rgba(255, 255, 255, 0.66);
 }
+/* =========================================================
+   MOBILE — HERO ACTIONS
+   ========================================================= */
 
-/* Mobile action buttons */
 body.restaurant-mode .actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
   gap: 8px;
+
+  width: 100%;
 }
 
 body.restaurant-mode .actions a,
 body.restaurant-mode .actions button {
   min-height: 40px;
 
-  padding: 0 17px;
+  padding:
+    0 17px;
 
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border:
+    1px solid rgba(255, 255, 255, 0.20);
+
   border-radius: 999px;
 
-  background: rgba(255, 255, 255, 0.94);
+  background:
+    rgba(255, 255, 255, 0.94);
+
   color: #151515;
 
   font-family: inherit;
@@ -3325,6 +3375,7 @@ body.restaurant-mode .actions a:active,
 body.restaurant-mode .actions button:active {
   transform: scale(0.97);
 }
+
 /* Mobile hero fade */
 body.restaurant-mode .hero::after {
   height: 9px;
@@ -3342,10 +3393,14 @@ body.restaurant-mode .hero::after {
 /* Main width */
 body.restaurant-mode .app main {
   width:
-    calc(100% - 20px);
-}
+calc(100% - 24px);
 
-  /* =========================================================
+  max-width: 850px;
+
+  margin-right: auto;
+  margin-left: auto;}
+
+/* =========================================================
    MOBILE — CATEGORY NAVIGATION
    ========================================================= */
 
@@ -3355,18 +3410,28 @@ body.restaurant-mode .cats {
   z-index: 100;
 
   width: 100vw;
-  margin-right: calc(50% - 50vw);
-  margin-left: calc(50% - 50vw);
+
+  margin-right:
+    calc(50% - 50vw);
+
+  margin-left:
+    calc(50% - 50vw);
 
   margin-bottom: 20px;
 
-  background: rgba(255, 255, 255, 0.88);
+  background:
+    rgba(255, 255, 255, 0.90);
 
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom:
+    1px solid rgba(0, 0, 0, 0.055);
+
   border-radius: 0;
 
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.045);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
   box-sizing: border-box;
 }
@@ -3375,20 +3440,18 @@ body.restaurant-mode .cats-in {
   width: 100%;
 
   padding:
-    5px 8px;
+    6px 10px;
 
   box-sizing: border-box;
 
   display: flex;
-
   align-items: center;
 
-  gap: 8px;
+  gap: 7px;
 
   overflow-x: auto;
 
   scrollbar-width: none;
-
   -webkit-overflow-scrolling: touch;
 }
 
@@ -3397,20 +3460,27 @@ body.restaurant-mode .cats-in::-webkit-scrollbar {
 }
 
 body.restaurant-mode .cats-in button {
-  flex: 0 0 auto;
+  flex:
+    0 0 auto;
 
-  min-height: 38px;
+  min-height: 37px;
 
-  padding: 0 16px;
+  padding:
+    0 15px;
 
-  border: 1px solid rgba(20, 20, 20, 0.07);
+  border:
+    1px solid rgba(20, 20, 20, 0.065);
+
   border-radius: 999px;
 
-  background: rgba(255, 255, 255, 0.96);
+  background:
+    rgba(255, 255, 255, 0.96);
+
   color: #555555;
 
   font-family: inherit;
-  font-size: 13px;
+
+  font-size: 12px;
   font-weight: 700;
 
   white-space: nowrap;
@@ -3418,7 +3488,7 @@ body.restaurant-mode .cats-in button {
   cursor: pointer;
 
   box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.035);
+    0 2px 7px rgba(0, 0, 0, 0.025);
 
   transition:
     background 180ms ease,
@@ -3434,7 +3504,7 @@ body.restaurant-mode .cats-in button:hover {
   border-color:
     color-mix(
       in srgb,
-      var(--primary) 25%,
+      var(--primary) 24%,
       transparent
     );
 
@@ -3448,7 +3518,7 @@ body.restaurant-mode .cats-in button:hover {
     0 4px 12px
     color-mix(
       in srgb,
-      var(--primary) 8%,
+      var(--primary) 7%,
       transparent
     );
 }
@@ -3456,6 +3526,9 @@ body.restaurant-mode .cats-in button:hover {
 body.restaurant-mode .cats-in button:active {
   transform: scale(0.97);
 }
+/* =========================================================
+   MOBILE — CATEGORY HEADINGS
+   ========================================================= */
 
 body.restaurant-mode .category {
   margin-bottom: 38px;
@@ -3468,14 +3541,37 @@ body.restaurant-mode .category::after {
 }
 
 body.restaurant-mode .category h2 {
-  margin-bottom: 14px;
-  padding-right: 12px;
+  margin:
+    0 0 14px;
+
+  padding-right: 13px;
+
+  color: #171717;
 
   font-size: 19px;
   line-height: 1.4;
   font-weight: 800;
+
+  letter-spacing: -0.2px;
 }
 
+body.restaurant-mode .category h2::before {
+  width: 4px;
+  height: 21px;
+
+  border-radius: 99px;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--primary),
+      color-mix(
+        in srgb,
+        var(--primary) 55%,
+        #ffffff
+      )
+    );
+}
  body.restaurant-mode .item {
   min-height: 125px;
   overflow: hidden;
