@@ -189,8 +189,8 @@ heroImage: "/IMG/tanja-tepavac-jSH-7IjJVsQ-unsplash.jpg",
   ],
 
   theme: {
-    primary: "#ff5900",
-    dark: "#1b1b1c",
+    primary: "#E2452B",
+    dark: "#14110f",
   },
 
   currency: "د.ع",

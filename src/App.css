@@ -3483,12 +3483,11 @@ body.restaurant-mode .actions button {
   border:
     1px solid rgba(255, 255, 255, 0.20);
 
-  border-radius: 999px;
+  border-radius: 15px;
 
-  background:
-    rgba(255, 255, 255, 0.94);
+  background: var(--primary);
 
-  color: #151515;
+  color: #ffffff;
 
   font-family: inherit;
   font-size: 13px;
@@ -4368,4 +4367,17 @@ body.restaurant-mode .plato-contact-button {
 body.restaurant-mode .plato-contact-button:hover {
   transform: translateY(-1px);
   opacity: 0.9;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.hero-btn svg {
+  flex-shrink: 0;
+  color: white;
+  stroke-width: 3px;
 }
