@@ -2,8 +2,8 @@ const DEFAULT_RESTAURANT_SETTINGS = {
   branchesEnabled: false,
   branches: [],
   theme: {
-    primary: "#00ff55",
-    dark: "#171717",
+    primary: "#E2452B",
+    dark: "#14110f",
   },
   timezone: "Asia/Baghdad",
   currency: "د.ع",

@@ -601,7 +601,7 @@ setShowCheckout(false);
     />
   </svg>
 
-  <span>تواصل معنا</span>
+  <span>للتواصل </span>
 </a>
       )}
 
@@ -627,7 +627,7 @@ setShowCheckout(false);
     <circle cx="12" cy="10" r="2.5" />
   </svg>
 
-  <span>موقع المطعم</span>
+  <span>الموقع </span>
 </a>
       )}
 

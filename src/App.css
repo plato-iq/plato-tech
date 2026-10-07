@@ -90,7 +90,7 @@
   box-sizing: border-box;
 
   scrollbar-width: thin;
-  scrollbar-color: #d6d6d6 transparent;
+  scrollbar-color: #3c3c3c transparent;
 }
 
 html {
@@ -1797,20 +1797,14 @@ body.restaurant-mode .order-types button:hover {
 }
 
 body.restaurant-mode .order-types button.active {
-  border-color: #22c55e;
+  border-color: #000000;
 
-  background:
-    linear-gradient(
-      135deg,
-      #16a34a,
-      #22c55e
-    );
+  background: #171717;
 
   color: #ffffff;
 
   box-shadow:
-    0 7px 20px
-    rgba(34, 197, 94, 0.2);
+   #171717;
 
   transform: translateY(-1px);
 }
@@ -1912,11 +1906,11 @@ body.restaurant-mode .send-order-button {
 
   width: 100%;
 
-  min-height: 50px;
+  min-height: 10px;
 
   margin-top: 18px;
 
-  padding: 15px 20px;
+  padding: 10px 10px;
 
   overflow: hidden;
 
@@ -1933,9 +1927,9 @@ body.restaurant-mode .send-order-button {
 
   color: #ffffff;
 
-  font-size: 16px;
+  font-size: 20px;
 
-  font-weight: 800;
+  font-weight: 1000;
 
   cursor: pointer;
 
@@ -1977,19 +1971,20 @@ body.restaurant-mode .send-order-button::before {
 }
 
 body.restaurant-mode .send-order-button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-10px);
 
   box-shadow:
     0 10px 27px
-    rgba(20, 140, 69, 0.32);
+    rgb(4, 255, 109);
+    
 }
 
 body.restaurant-mode .send-order-button:hover::before {
-  left: 110%;
+  left: -10%;
 }
 
 body.restaurant-mode .send-order-button:active {
-  transform: scale(0.98);
+  transform: scale(10);
 }
 
 
@@ -2026,7 +2021,7 @@ body.restaurant-mode .order-success {
 
   background: #ffffff;
 
-  border-radius: 22px;
+  border-radius: 20px;
 
   text-align: center;
 
@@ -2082,13 +2077,13 @@ body.restaurant-mode .order-success p {
 
   color: #666666;
 
-  font-size: 14px;
+  font-size: 15px;
 }
 
 body.restaurant-mode .order-success p strong {
   color: #171717;
 
-  font-weight: 800;
+  font-weight: 1000;
 }
 
 body.restaurant-mode .success-whatsapp-button {
@@ -3491,7 +3486,7 @@ body.restaurant-mode .actions button {
 
   font-family: inherit;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 1000;
 
   box-shadow:
     0 8px 24px rgba(0, 0, 0, 0.18);
@@ -3815,10 +3810,10 @@ body.restaurant-mode .item-add {
   font-weight: 800;
 
   box-shadow:
-    0 5px 14px
+    0 1px 13px
     color-mix(
       in srgb,
-      var(--primary) 18%,
+      var(--primary) 90%,
       transparent
     );
 }
@@ -4020,12 +4015,12 @@ body.restaurant-mode .order-types button {
   min-height: 44px;
 
   padding:
-    8px 12px;
+    8px 1px;
 
   border:
     1px solid rgba(0, 0, 0, 0.07);
 
-  border-radius: 12px;
+  border-radius: 120px;
 
   background: #f7f7f8;
 
@@ -4033,7 +4028,7 @@ body.restaurant-mode .order-types button {
 
   font-family: inherit;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 1000;
 
   transition:
     background 180ms ease,
@@ -4043,7 +4038,7 @@ body.restaurant-mode .order-types button {
 }
 
 body.restaurant-mode .order-types button:hover {
-  transform: translateY(-1px);
+  transform: translateY(10px);
 }
 
 body.restaurant-mode .order-types button.active,
@@ -4070,7 +4065,7 @@ body.restaurant-mode .checkout select {
   border:
     1px solid rgba(0, 0, 0, 0.09);
 
-  border-radius: 12px;
+  border-radius: 15px;
 
   background: #fafafa;
 
@@ -4121,7 +4116,7 @@ body.restaurant-mode .checkout select:focus {
 
   body.restaurant-mode .order-success {
     padding:
-      26px 18px;
+      25px 25px;
   }
 
 
