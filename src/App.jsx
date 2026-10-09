@@ -780,7 +780,7 @@ function ClinicHome({ clinicData }) {
   {clinic.phone && (
     <a
       href={`tel:+${clinic.phone}`}
-      className="clinic-meta-button"
+      className="clinic-meta-button vce-zar625"
       dir="ltr"
     >
       <span>اتصال</span>
@@ -792,7 +792,7 @@ function ClinicHome({ clinicData }) {
       href={clinic.location}
       target="_blank"
       rel="noreferrer"
-      className="clinic-meta-button"
+      className="clinic-meta-button vce-d5ro5p"
     >
       
       <span>موقع العيادة</span>
@@ -917,7 +917,7 @@ function ClinicHome({ clinicData }) {
               فريقنا
             </span>
 
-            <h2>
+            <h2 className="vce-dcf2mb">
               أطباؤنا
             </h2>
 
@@ -1003,7 +1003,7 @@ function ClinicHome({ clinicData }) {
 
         <footer className="clinic-footer">
 
-          <span>
+          <span className="vce-oe5q42">
             Powered by{" "}
             <strong>
               PLATO TECH
@@ -1550,7 +1550,7 @@ setShowCheckout(false);
         <nav className="cats" aria-label="تصنيفات المنيو">
   <div className="wrap cats-in">
     {selectedMenu.map((category) => (
-      <button
+      <button className="vce-glwzqo"
         type="button"
         key={category.name}
         onClick={() => {
@@ -1577,7 +1577,7 @@ setShowCheckout(false);
             id={`category-${category.name}`}
             className="category"
           >
-            <h2>{category.name}</h2>
+            <h2 className="vce-nb93oi">{category.name}</h2>
 <div className="products">
   {category.items.map((item) => {
     const cartItem = cart.find(
@@ -1593,7 +1593,7 @@ setShowCheckout(false);
       >
         <div className="item-media">
           {item.image ? (
-            <img
+            <img className="vce-70s6yo"
               src={item.image}
               alt={item.name}
               loading="lazy"
@@ -1662,7 +1662,7 @@ setShowCheckout(false);
                     +
                   </button>
 
-                  <span>{quantity}</span>
+                  <span className="vce-14grmr">{quantity}</span>
 
                   <button
                     type="button"
@@ -1761,14 +1761,14 @@ setShowCheckout(false);
             </div>
 
             <button
-              className="checkout-button"
+              className="checkout-button vce-i1q4j6"
               onClick={openCheckout}
             >
               إتمام الطلب
             </button>
 
             <button
-              className="show-cart-button"
+              className="show-cart-button vce-qh5mq4"
               onClick={() => {
                 const cartItems =
                   document.querySelector(

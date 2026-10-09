@@ -540,8 +540,6 @@ body.restaurant-mode .actions a:hover,
 body.restaurant-mode .actions button:hover {
   transform: translateY(-3px);
 
-  background: #fff;
-
   box-shadow:
     0 14px 35px rgba(0, 0, 0, 0.22);
 }
@@ -3503,8 +3501,6 @@ body.restaurant-mode .actions button {
 body.restaurant-mode .actions a:hover,
 body.restaurant-mode .actions button:hover {
   transform: translateY(-1px);
-
-  background: #ffffff;
 
   box-shadow:
     0 10px 28px rgba(0, 0, 0, 0.22);
@@ -7327,5 +7323,15 @@ border-radius: 0%;
   .clinic-booking {
     padding-right: 12px;
     height: 631px;
+  }
+  .clinic-footer {
+    padding-top: 0px;
+  }
+  .clinic-service-book {
+    font-size: 12px;
+    width: 83px;
+  }
+  .clinic-section-heading {
+    width: 356px;
   }
 }

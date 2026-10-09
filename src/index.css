@@ -1946,3 +1946,18 @@ textarea:focus-visible {
     box-sizing: border-box;
   }
 }
+
+@media (max-width: 767.98px) {
+  .checkout {
+    height: 641px;
+    padding-right: 4px;
+    width: 318px;
+    padding-left: 16px;
+  }
+  .checkout-header {
+    margin-top: 4px;
+  }
+  .close-checkout {
+    font-size: 30px;
+  }
+}
